@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block title%} Curreny Converter! {% endblock %}
+
+{% block content %}
+<h1 class="text-center">Currency Converter</h1>
+<p class="text-center">Enter a currency you wish to convert from and a new currency along with an amount. Have fun!</p>
+
+
+<form action="/calculate" method="POST">
+    <label for="current-currency" class="form-label">Converting From: </label>
+    <input type="text" id="current-currency" name="current-currency" class="form-control">
+    <br>
+    <label for="new-currency" class="form-label">Converting To: </label>
+    <input type="text" id="new-currency" name="new-currency" class="form-control">
+    <br>
+    <label for="amount" class="form-label">Amount: </label>
+    <input type="text" id="amount" name="amount" class="form-control">
+    <br>
+    <button class="btn btn-primary">Convert</button>
+</form>
+
+{% endblock %}
