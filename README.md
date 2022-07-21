@@ -1,4 +1,4 @@
-# Forex-Converter
+# Currency Converter!
 
 ## Table of Contents
 
