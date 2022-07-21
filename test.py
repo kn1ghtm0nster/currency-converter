@@ -32,10 +32,10 @@ class ViewTesting(TestCase):
         """
         with app.test_client() as client:
             form_data = {'current-currency':'usd', 'new-currency':'jpy', 'amount':100}
-            res = client.post('/calculate', data=form_data)
+            res = client.post('/calculate', data=form_data, follow_redirects=True)
             html = res.get_data(as_text=True)
             self.assertEqual(res.status_code, 200)
-            self.assertIn("<h1>The result is: ¥ 11936.77</h1>", html)
+            self.assertIn("<h1>The result is: ¥ 13817.04</h1>", html)
     
     def test_calculate_form_usd_to_eur(self):
         """second basic form data test (from usd to eur)
@@ -43,10 +43,10 @@ class ViewTesting(TestCase):
         """
         with app.test_client() as client:
             form_data = {'current-currency':'usd', 'new-currency':'eur', 'amount':100}
-            res = client.post('/calculate', data= form_data)
+            res = client.post('/calculate', data= form_data, follow_redirects=True)
             html = res.get_data(as_text=True)
             self.assertEqual(res.status_code, 200)
-            self.assertIn("<h1>The result is: € 90.84</h1>", html)
+            self.assertIn("<h1>The result is: € 98.05</h1>", html)
             
     def test_blank_form_redirect_response(self):
         """function is testing for redirect status code and location."""
@@ -180,5 +180,5 @@ class ViewTesting(TestCase):
             res = client.post('/calculate', data= form_data, follow_redirects=True)
 
             self.assertEqual(res.status_code, 200)
-            self.assertEqual(session['result'], 11936.77)
+            self.assertEqual(session['result'], 13817.04)
             self.assertEqual(session['currency_sign'], '¥')
